@@ -1,0 +1,36 @@
+#import files
+import os
+import shutil
+
+#folder path
+folderpath = r"C:\Users\LENOVO\Downloads\R.K. Python"
+os.chdir(folderpath)
+os.getcwd()
+os.listdir()
+
+#LIST EXTENTION
+list_extention = []
+for fl in os.listdir():
+    extension = fl.split(".")[-1]
+    list_extention.append(extension)
+print(list_extention)
+list_extention = list(set(list_extention))
+len(list_extention)
+path = os.environ["userProfile"] + "\\" + "DESKTOP" + "\\" + "File Manager"
+
+#CHECK FOR DIRECTORY
+try:
+    shutil.rmtree(path)
+    os.mkdir(path)
+except:
+    os.mkdir(path)
+
+#cpoing files
+for ex in list_extention:
+    print(ex,end=",")
+    os.mkdir(path + "\\" + ex)
+    for fl in os.listdir():
+        if ex in fl:
+            shutil.copy(fl, path + "\\" + ex)
+
+fl
